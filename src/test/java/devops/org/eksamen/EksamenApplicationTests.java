@@ -93,7 +93,7 @@ class EksamenApplicationTests {
         given()
                 .get("imgs/1")
                 .then()
-                .statusCode(200);
+                .statusCode(303);
     }
 
 }
