@@ -78,4 +78,13 @@ public class RestController {
         return ResponseEntity.status(200).body(imageAsString);
     }
 
+    //This is just method for testing of deployment
+    @PostMapping(path = "/reflect/{msg}")
+    public ResponseEntity<String> reflectMessage(
+            @PathVariable String msg
+    ){
+        return ResponseEntity.status(201).body(msg);
+    }
+
+
 }
