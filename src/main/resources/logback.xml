@@ -28,5 +28,9 @@
         <appender-ref ref="LogzioLogbackAppender"/>
         <appender-ref ref="STDOUT"/>
     </root>
+    <root level="warn">
+        <appender-ref ref="LogzioLogbackAppender"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
 
 </configuration>

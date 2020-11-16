@@ -7,8 +7,9 @@ import devops.org.eksamen.users.UserService;
 import io.micrometer.core.instrument.DistributionSummary;
 import io.micrometer.core.instrument.LongTaskTimer;
 import io.micrometer.core.instrument.MeterRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -23,7 +24,6 @@ import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -38,7 +38,7 @@ public class RestController {
     private final MeterRegistry meterRegistry;
     private final UserService userService;
     private final ResourceLoader resourceLoader;
-    private static final Logger LOG = Logger.getLogger(RestController.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(RestController.class.getName());
 
 
     @Autowired
@@ -53,10 +53,10 @@ public class RestController {
     public ResponseEntity<Boolean> createUser(
             @RequestBody UserDto userDto
     ) {
+        LOG.info("Creating new user");
         meterRegistry
                 .counter("http_post_request", "api/user", userDto.getUserName())
                 .increment();
-        LOG.info("Creating new user");
         return ResponseEntity
                 .status(201)
                 .body(userService.registerUser(userDto.getUserName(), userDto.getEmail(), userDto.getName(), userDto.getLastName()));
@@ -66,6 +66,7 @@ public class RestController {
     public ResponseEntity<User> getUserInfo(
             @PathVariable String userName
     ) {
+        LOG.info("Getting user info");
         meterRegistry
                 .counter("http_get_request", "user_info_fetch", userName)
                 .increment();
@@ -86,6 +87,7 @@ public class RestController {
     public ResponseEntity<Boolean> getRandomCard(
             @RequestBody UserDto userDto
     ) {
+        LOG.info("Getting random card for user!");
         meterRegistry
                 .counter("http_post_request", "local", "eu", "number_of_random_cards_pulled", userDto.getUserName())
                 .increment();
@@ -107,12 +109,12 @@ public class RestController {
     public ResponseEntity<String> getImage(
             @PathVariable String imgId
     ) {
-        LOG.info("This is test log " + env.getProperty("env"));
-
+        LOG.info("Fetching image data and sending to user. ");
         long startTime = System.currentTimeMillis();
 
         String imageName;
         try {
+            LOG.warn("This call could fail!");
             imageName = CardsService
                     .getCards()
                     .get(Integer.parseInt(imgId));
@@ -120,6 +122,7 @@ public class RestController {
                     .counter("http_get_failed_request", "imgs/{imgId}/", imgId)
                     .increment();
         } catch (Exception e) {
+            LOG.error("Well, sry, but it did fail, there is no image with index: " + imgId + " on server ");
             return ResponseEntity
                     .status(404)
                     .body("not found");
@@ -128,11 +131,13 @@ public class RestController {
         Resource svg = resourceLoader.getResource("classpath:1236106-monsters/svg/" + imageName);
         String imageAsString;
         try (Reader reader = new InputStreamReader(svg.getInputStream(), UTF_8)) {
+            LOG.warn("Trying to get image, this call could fail!");
             imageAsString = FileCopyUtils.copyToString(reader);
         } catch (IOException e) {
             meterRegistry
                     .counter("http_get_failed_request", "image_fetched_failed", imgId)
                     .increment();
+            LOG.error("Well, sry, but it did fail. Failed to fetch image with index: " + imgId + "!");
             throw new UncheckedIOException(e);
         }
         meterRegistry
@@ -154,7 +159,7 @@ public class RestController {
     public ResponseEntity<String> reflectMessage(
             @PathVariable String msg
     ) {
-
+        LOG.warn("This is going to take long time!");
         LongTaskTimer longTaskTimer = LongTaskTimer
                 .builder("reflect_long_response")
                 .description("Simulating server heavy operation")
