@@ -5,3 +5,4 @@
 - Lage logg eksempler
 - Deploy til flere providers
 - add status key to google cloud secrets
+- enable influx

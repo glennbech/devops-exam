@@ -8,6 +8,7 @@ import io.micrometer.core.instrument.DistributionSummary;
 import io.micrometer.core.instrument.LongTaskTimer;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.MediaType;
@@ -30,7 +31,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
-    private MeterRegistry meterRegistry;
+    private final MeterRegistry meterRegistry;
     private final UserService userService;
     private final ResourceLoader resourceLoader;
     private static final Logger LOG = Logger.getLogger(RestController.class.getName());
