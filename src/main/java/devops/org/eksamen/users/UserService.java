@@ -44,4 +44,20 @@ public class UserService {
         user.getCardsOwned().add(cardId);
         return true;
     }
+
+    /**
+     * Calculate size of user
+     * All strings --> UTF8 size * number of chars
+     * @param user user that we are calculating soze of
+     * @return size of user in bytes
+     */
+    public double getUserSize(User user){
+        double sum = 0;
+        sum += user.getEmail().length();
+        sum += user.getUserName().length();
+        sum += user.getName().length();
+        sum += user.getLastName().length();
+        sum += user.getCardsOwned().stream().mapToInt(String::length).sum();
+        return sum;
+    }
 }
