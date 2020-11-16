@@ -9,6 +9,7 @@ import io.micrometer.core.instrument.LongTaskTimer;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.MediaType;
@@ -30,6 +31,9 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @RequestMapping(path = "/api")
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
+
+    @Autowired
+    private Environment env;
 
     private final MeterRegistry meterRegistry;
     private final UserService userService;
@@ -103,6 +107,8 @@ public class RestController {
     public ResponseEntity<String> getImage(
             @PathVariable String imgId
     ) {
+        LOG.info("This is test log " + env.getProperty("env"));
+
         long startTime = System.currentTimeMillis();
 
         String imageName;
