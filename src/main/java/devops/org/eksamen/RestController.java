@@ -32,9 +32,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
-    @Autowired
-    private Environment env;
-
     private final MeterRegistry meterRegistry;
     private final UserService userService;
     private final ResourceLoader resourceLoader;
@@ -46,6 +43,11 @@ public class RestController {
         this.userService = userService;
         this.resourceLoader = resourceLoader;
         this.meterRegistry = meterRegistry;
+    }
+
+    @GetMapping(path = "/")
+    public ResponseEntity<String> getHomePage(){
+        return ResponseEntity.status(200).body("Wellcome to homepage");
     }
 
     //Register user
