@@ -40,3 +40,5 @@ build/
 /influxdb.conf
 /influxdb
 types.db
+
+src/main/resources/logback.xml
