@@ -45,7 +45,7 @@ public class RestController {
         this.meterRegistry = meterRegistry;
     }
 
-    @GetMapping(path = "/")
+    @GetMapping
     public ResponseEntity<String> getHomePage(){
         return ResponseEntity.status(200).body("Wellcome to homepage");
     }
