@@ -23,6 +23,7 @@ jobs:
     script:
     - |-
       set -ex;
+      az -version &&\
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
