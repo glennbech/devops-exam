@@ -5,7 +5,6 @@ env:
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
   - APP_URL=4445fdfb-f955-4df8-91f7-099d22cf4bdd
   - TENANT=07081c28-29b5-4f71-b511-61824e32846a
-  - secure: xCXNi2/iWjg+R/3l/Z4+sEocZz5oa0xOYW5UEks+RWRp7ih7MGRb2fXYYzqS4T8nqkrBwphlelorlTUdl8x7+vvdwBtU53Sd+v4Q3WPfkk+FNL3QCXNtzJzPr5wY3BsEVEPG4BmvyQzk31DVwsq8xe+QiQyp393XTSPDRsFMTR+MHu7wQSmkVwiwr3mU+maCg3t1Btglege6GSzeLTOBy1EO37ynwA3dlWnPh17OPI6eJo2l49GYUFaWFj7moaWIege/NiIAst7ZNsloevW6at9iV0XodtRy4Eiwb9fTO2jjhDsYJSpp181hqxuINsapQqldZkcWIBle1K1L8D27dGlBRzQeaMkckwfuxVke4t7+xDG913U+eVG9Jhawwigbe6kA8GU0nN88d7hr3aUrfula0O1gLn3g0WFXkF0hvN0m/WhEK4C88yJ1zEAgG2BlSDfiV9y8C0OrD1I9dN1TTbCaz5ij0yugNC2kFpBDr18ivEx2C3r81MraETRIOc1AXsFaVhVYpZBQhdIomcw+vTDLLKC4y5oZfV3vsNCmI9hGIaBAAEpci8enN07kUH7xFERlZhpqBhNFgcWgAIiy9EGliXzS5rS757aniSisb3ZOqlLORRx+jc0JTZlwVGRyEiUiDb/k0K/UBFRSun7yRPTe2wMde9FbrU9xhzH54+I=
 jobs:
   include:
   - stage: runTests
@@ -16,13 +15,11 @@ jobs:
     before_install:
     - openssl aes-256-cbc -K $encrypted_98d237b7dbf4_key -iv $encrypted_98d237b7dbf4_iv
       -in google-key.json.enc -out google-key.json -d
-    - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     - curl https://sdk.cloud.google.com | bash > /dev/null
     - source "$HOME/google-cloud-sdk/path.bash.inc"
     - gcloud auth activate-service-account --key-file=google-key.json
     - gcloud auth configure-docker
     - gcloud config set project "${GCP_PROJECT_ID}"
-    - az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
     install: true
     script:
     - |-
