@@ -22,11 +22,11 @@ jobs:
     - gcloud auth activate-service-account --key-file=google-key.json
     - gcloud auth configure-docker
     - gcloud config set project "${GCP_PROJECT_ID}"
+    - az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
     install: true
     script:
     - |-
       set -ex;
-      az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
