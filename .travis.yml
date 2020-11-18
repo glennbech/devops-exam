@@ -3,6 +3,8 @@ env:
   - GCP_PROJECT_ID=devops-examen-2020
   - IMAGE=gcr.io/devops-examen-2020/card
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - APP_URL=4445fdfb-f955-4df8-91f7-099d22cf4bdd
+  - TENANT=07081c28-29b5-4f71-b511-61824e32846a
   - secure: xCXNi2/iWjg+R/3l/Z4+sEocZz5oa0xOYW5UEks+RWRp7ih7MGRb2fXYYzqS4T8nqkrBwphlelorlTUdl8x7+vvdwBtU53Sd+v4Q3WPfkk+FNL3QCXNtzJzPr5wY3BsEVEPG4BmvyQzk31DVwsq8xe+QiQyp393XTSPDRsFMTR+MHu7wQSmkVwiwr3mU+maCg3t1Btglege6GSzeLTOBy1EO37ynwA3dlWnPh17OPI6eJo2l49GYUFaWFj7moaWIege/NiIAst7ZNsloevW6at9iV0XodtRy4Eiwb9fTO2jjhDsYJSpp181hqxuINsapQqldZkcWIBle1K1L8D27dGlBRzQeaMkckwfuxVke4t7+xDG913U+eVG9Jhawwigbe6kA8GU0nN88d7hr3aUrfula0O1gLn3g0WFXkF0hvN0m/WhEK4C88yJ1zEAgG2BlSDfiV9y8C0OrD1I9dN1TTbCaz5ij0yugNC2kFpBDr18ivEx2C3r81MraETRIOc1AXsFaVhVYpZBQhdIomcw+vTDLLKC4y5oZfV3vsNCmI9hGIaBAAEpci8enN07kUH7xFERlZhpqBhNFgcWgAIiy9EGliXzS5rS757aniSisb3ZOqlLORRx+jc0JTZlwVGRyEiUiDb/k0K/UBFRSun7yRPTe2wMde9FbrU9xhzH54+I=
 jobs:
   include:
@@ -24,7 +26,7 @@ jobs:
     script:
     - |-
       set -ex;
-      echo $AZURE_PASSWORD &&\
+      az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
