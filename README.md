@@ -12,3 +12,14 @@
 - prøve seg på: [google cloud uptime check](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/monitoring_uptime_check_config)
 - public repoer
 - nevne det om feil meldinger influx: logging.level.io.micrometer.influx:off`
+- opsgenie:
+    - Read, Create and Update, Delete, Configuration Access for api key
+    - Grunnen jeg valgte opsgenie er integrasjon med statuscake:
+    https://docs.opsgenie.com/docs/statuscake-integration
+    StatusCake is a SaaS based web site monitoring service, 
+    providing you various kinds of statistics, analytics and 
+    information about your website`s downtime. 
+    Opsgenie is an alert and notification management solution 
+    that is highly complementary to StatusCake.
+    
+    - Status cake integration https://docs.opsgenie.com/docs/statuscake-integration#add-statuscake-integration-in-opsgenie
