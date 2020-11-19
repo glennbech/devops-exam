@@ -11,7 +11,7 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
 - [Devops 2020 eksamen - Applikasjon](#devops-2020-eksamen---applikasjon)
 - [Innholdsfortegnelse](#innholdsfortegnelse)
   * [Krav til leveranse](#krav-til-leveranse)
-  * [Krav til applikasjonen:](#krav-til-applikasjonen-)
+  * [Krav til applikasjonen](#krav-til-applikasjonen)
   * [Oppgave 1 - Docker](#oppgave-1---docker)
   * [Oppgave 2 - Metrikker](#oppgave-2---metrikker)
   * [Oppgave 3 - Logger](#oppgave-3---logger)
@@ -114,8 +114,8 @@ som er `seure`
          - Cloud Run Admin
          - Storage Admin
 - I `.travis.yml` filen må man endre de globale variablene:
-    - GCP_PROJECT_ID=<gcp-project-id>
-    - IMAGE=gcr.io/<gcp-project-id>/<image-name>
+    - GCP_PROJECT_ID=`<gcp-project-id>
+    - IMAGE=`gcr.io/<gcp-project-id>/<image-name>`
     
 - logz.io token: `travis encrypt LOGZ_TOKEN=<your-token> --add`
 
