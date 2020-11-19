@@ -20,6 +20,10 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
   * [Oppgave 6 Valgfri IAC (infrastructure as code)](#oppgave-6-valgfri-iac)
 - [Bruksanvisning](#bruksanvisning)
   * [Konfigurasjon av hemligheter - applikasjon](#konfigurasjon-av-hemligheter---applikasjon)
+  * [API design og bruk av API](#api-design-og-bruk-av-api)
+    * [Kort om API](#kort-om-api)
+    * [API calls med eksempel data](#api-calls-med-eksempel-data)
+    
 
 ## Krav til leveranse
 - [x] Besvarelsen skal bestå av en tekstfil med lenke til to repositories. Et repo for applikasjon, og et for infrastruktur:
@@ -65,7 +69,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 ## Oppgave 3 - Logger
  - Alle kravene i oppgaven er oppfylt. 
  - Jeg har valgt å logge alt som er info eller høyre nivå.
- - For oppsett av secrets [gå til bruksanvisning](#Bruksanvisning)
+ - For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning)
 
 ## Oppgave 4 - Infrastruktur
  - Alle kravene er oppfylt.
@@ -73,7 +77,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 
 ## Oppgave 5 og Overvåkning og varsling
  - Alle kravene er oppfylt.  
- - For oppsett av secrets [gå til bruksanvisning](#Bruksanvisning)
+ - For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning)
 
 ## Oppgave 6 Valgfri IAC
 - Her valgte jeg å bruke [opsgenie](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs)
@@ -119,7 +123,14 @@ som er `seure`
     
 - logz.io token: `travis encrypt LOGZ_TOKEN=<your-token> --add`
 
+## API design og bruk av API
 
+### Kort om API
+Jeg har valgt å lage en enkel RESTful API i SpringBoot. Her kan man oprette brukere, tildele dem
+tilfeldige kort (cca. 100 forskjellige kort). Se bildene til kort (bilder er 
+egentlig svg streng).
+
+### API calls med eksempel data
 
 
 
