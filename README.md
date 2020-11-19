@@ -73,21 +73,35 @@ Men jeg tror at jeg har klart å bruke de som er gratis på en fornuftig måte, 
 for opsgenie og noen av bruksområder til den.
 - Flere detaljer om selve infrastrukturen finnes på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure)
  
+ ```
+    StatusCake is a SaaS based web site monitoring service, providing you various kinds of statistics, 
+    analytics and information about your website`s downtime. Opsgenie is an alert and notification 
+    management solution that is highly complementary to StatusCake.
+```
 
 # Bruksanvisning
-- endpoints
 
-- nevne det om feil meldinger influx: logging.level.io.micrometer.influx:off`
-- opsgenie:
-    - Read, Create and Update, Delete, Configuration Access for api key
-    - Grunnen jeg valgte opsgenie er integrasjon med statuscake:
-    https://docs.opsgenie.com/docs/statuscake-integration
-    StatusCake is a SaaS based web site monitoring service, 
-    providing you various kinds of statistics, analytics and 
-    information about your website`s downtime. 
-    Opsgenie is an alert and notification management solution 
-    that is highly complementary to StatusCake.
+## Konfigurasjon av hemligheter - applikasjon
+
+- Docker hub username: `travis encrypt DOCKER_USERNAME=<your_username> --add`
+- Docker hub : `travis encrypt DOCKER_KEY=<your-key> --add`
+    - For å opprete nøkkelen til Docker hub:
+        - Trykk på profil bruker navn opp til høyre
+        - `Account settings`
+        - `Security`
+        - `New access token`
+        - Velg navn og trykk `Create`
+- GCP service account credentials: `travis encrypt-file <file-name>.json --add`
+    - Service account må have følgende tilatelser (roles):
+         - Service Account User
+         - Cloud Run Admin
+         - Storage Admin
+- I `.travis.yml` filen må man endre de globale variablene:
+    - GCP_PROJECT_ID=<gcp-project-id>
+    - IMAGE=gcr.io/<gcp-project-id>/<image-name>
     
-    - Status cake integration https://docs.opsgenie.com/docs/statuscake-integration#add-statuscake-integration-in-opsgenie
+
+
+
 
 
