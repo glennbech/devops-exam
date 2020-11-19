@@ -62,21 +62,21 @@ denne tilfelle. Når container bygges, da brukes det `application-prod.propertie
 `-Dspring.profiles.active=prod` i Dockerfile `Entrypoint`. I `application-prod.properties` slår jeg av 
 influxDB logging for å slippe å ha masse errors, og for at logging skal være meningsfull.
 - Når det gjelder navngivning konvensjoner har jeg brukt underscore mellom ord  (`http_server_requests`) 
-basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_naming_meters)
+basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_naming_meters).
 - For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#api-calls-med-eksempel-data).
 
 ## Oppgave 3 - Logger
  - Alle kravene i oppgaven er oppfylt. 
  - Jeg har valgt å logge alt som er info eller høyre nivå.
- - For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning)
+ - For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning).
 
 ## Oppgave 4 - Infrastruktur
  - Alle kravene er oppfylt.
- - Repoet til infrastrukturen finner man [her](https://github.com/guberArmin/eksamen-infrastructure)
+ - Repoet til infrastrukturen finner man [her](https://github.com/guberArmin/eksamen-infrastructure).
 
 ## Oppgave 5 og Overvåkning og varsling
  - Alle kravene er oppfylt.  
- - For oppsett av hemmeligheter [gå til infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure)
+ - For oppsett av hemmeligheter [gå til infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
 
 ## Oppgave 6 Valgfri IAC
 - Her valgte jeg å bruke [opsgenie](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs)
@@ -89,7 +89,7 @@ Opsette er ikke vanskelig, og er godt dokumentert.
 - En av ulemper med opsgenie er at det er ikke slik at alt av funskjonaliteten er gratis.
 Men jeg tror at jeg har klart å bruke de som er gratis på en fornuftig måte, slik at jeg kan vise forståelset 
 for opsgenie og noen av bruksområder til den.
-- Flere detaljer om selve infrastrukturen finnes på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure)
+- Flere detaljer om selve infrastrukturen finnes på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
  
  ```
     StatusCake is a SaaS based web site monitoring service, providing you various kinds of statistics, 
