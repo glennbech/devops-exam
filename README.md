@@ -8,7 +8,6 @@ Dette er applikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen.
 Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastructure).
 
 # Innholdsfortegnelse
-- [Devops 2020 eksamen - Applikasjon](#devops-2020-eksamen---applikasjon)
 - [Innholdsfortegnelse](#innholdsfortegnelse)
   * [Krav til leveranse](#krav-til-leveranse)
   * [Krav til applikasjonen](#krav-til-applikasjonen)
@@ -128,10 +127,44 @@ som er `seure`
 ### Kort om API
 Jeg har valgt å lage en enkel RESTful API i SpringBoot. Her kan man oprette brukere, tildele dem
 tilfeldige kort (cca. 100 forskjellige kort). Se bildene til kort (bilder er 
-egentlig svg streng).
+egentlig svg streng). Siden det vær ikke fokuset på selve applikasjonen har jeg
+ikke brukt tid på sikkerhet eller GUI.
 
 ### API calls med eksempel data
 
+For å teste API har jeg brukt [postman](https://www.postman.com/).
+
+- `GET /api`
+    - Returnerer 200 med `Wellcome to homepage` streng. Brukes som endpoint som
+    statuscake skal kontrolere
+    
+- `POST /api/user`
+    - Brukes for å opprete ny bruker.
+      
+          Forventet payload:          
+                    
+                  {
+                        "userName": "user",
+                        "email": "jason@test.com",
+                        "name": "Name",
+                        "lastName": "LastName"
+                  }
+          
+- `GET /api/user/{userName}`
+    - Returnerer data om brukeren med userName
+
+- `POST /api/user/card`
+    - Hent tilfeldig kort, og legg det til på listen av kort, brukeren med 
+     `userName` eier.
+    
+            Forventet payload er: {"userName": "new123"}
 
 
+- `GET /api/imgs/{imgId}`
+    - Hent bilde med imgId (og vise den fram i browseren).
 
+- `GET /api/reflect/{msg}`
+    - Returnerer `msg` tilbake til brukeren.
+      Dette er endpoint som brukes for å simulere stor belasting på serveren,
+      som fører til lang beregningstid. Grunnen til at jeg har den er for å
+      bruke `LongTaskTimer`. 
