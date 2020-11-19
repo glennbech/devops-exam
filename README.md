@@ -46,7 +46,7 @@ ikke til filer. I praksis vil dette si bruk av Logback eller Log4j via sl4j i Sp
 "Console appender". Ikke bruk System.out.println();
 ## Oppgave 1 - Docker
  - Alle kravene er oppfylt og i tillegg deployer jeg docker image til `docker hub`.
- For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning)
+ For oppsett av hemmeligheter [gå til bruksanvisning](#docker)
 
 ## Oppgave 2 - Metrikker
 - Alle kravene i oppgaven er oppfylt. 
@@ -100,7 +100,7 @@ for opsgenie og noen av bruksområder til den.
 
 - Før man skal legge in nye hemligheter, må man slette alle globale variable
 som er `seure`
-- Docker hub username: `travis encrypt DOCKER_USERNAME=<your_username> --add`
+- <a name="docker">Docker hub username:</a> `travis encrypt DOCKER_USERNAME=<your_username> --add`
 - Docker hub : `travis encrypt DOCKER_KEY=<your-key> --add`
     - For å opprete nøkkelen til Docker hub:
         - Trykk på profil bruker navn opp til høyre
