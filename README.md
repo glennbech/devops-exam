@@ -63,7 +63,7 @@ denne tilfelle. Når container bygges, da brukes det `application-prod.propertie
 influxDB logging for å slippe å ha masse errors, og for at logging skal være meningsfull.
 - Når det gjelder navngivning konvensjoner har jeg brukt underscore mellom ord  (`http_server_requests`) 
 basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_timers)
-- For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#Bruksanvisning).
+- For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#api-calls-med-eksempel-data).
 
 ## Oppgave 3 - Logger
  - Alle kravene i oppgaven er oppfylt. 
@@ -117,7 +117,7 @@ som er `seure`
          - Cloud Run Admin
          - Storage Admin
 - I `.travis.yml` filen må man endre de globale variablene:
-    - GCP_PROJECT_ID=`<gcp-project-id>
+    - GCP_PROJECT_ID=`<gcp-project-id>`
     - IMAGE=`gcr.io/<gcp-project-id>/<image-name>`
     
 - logz.io token: `travis encrypt LOGZ_TOKEN=<your-token> --add`
