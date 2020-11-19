@@ -3,8 +3,8 @@ env:
   - GCP_PROJECT_ID=devops-examen-2020
   - IMAGE=gcr.io/devops-examen-2020/card
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-  - APP_URL=4445fdfb-f955-4df8-91f7-099d22cf4bdd
-  - TENANT=07081c28-29b5-4f71-b511-61824e32846a
+  - DOCKER_USERNAME=guber90
+  - secure: 5lVW3OG7Yp3MAkX//2G8Y6BOZlX6zulb2fqPtz5DK5SkBORkrdZAWSn8YTM7bguH1J/i7WSeSFvUSb6hHAfhTKZNKWos0lIAX3oI6SE+VhdVyGyupGi0u1L9RhHtBWm+6M4aaImPeODHqs6L+axtqy8q8jA5a4opAZeYTdomP1oMZe0b/lKb5ulTky8l6nseqkLsQzUYHCQCkJokGc3EncXasVA9em7NAAs+WzScwqnCadvW3FOl58E/HYCu4Y1ctXm0LOeeR3DaIiQu80FHeHwofNsTqcX9vQ64oTwlOES8L7Lxh/55giyd3qFeeh6tRSjOfhnmkd3uuZc6EgpYwKTQLIA2E+aiQx3JnyRGYKJfNW/dQOaRPo1UmVZsRv7tPoCDO0W4MJuWHW3D4dFBjoYv7rVcNkPzkWGoeDPk5ZYyeM7IhN2PRLjWiY7bJhvo/lwjLZ2ZDK/7uPYXUDjuC/ldYShJSQNhPG9WWbsMeLMD5/9Pcg/UX4sFCSEyI16PdhWjrUcTJkEjLBCSpKivBDcBM0/fdV+t/+Wpc2dXLD56GnmTabpTOpmXZhmW2XsRVfkpdB4/vr8SQPEWzZSVK5dMkzCvJIAWCMlU76WTKK8sbSdBhgMiwGRZ7EeSZ/QAn4upPAOUuRO4vtTcgzlCZtU+qQnKFPzOQwjxDpUvO34=
 jobs:
   include:
   - stage: runTests
@@ -24,6 +24,8 @@ jobs:
     script:
     - |-
       set -ex;
+      $DOCKER_KEY | docker login --username $DOCKER_USERNAME --password-stdin
+      docker push $DOCKER_USERNAME/card
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
