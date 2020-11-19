@@ -102,7 +102,7 @@ som er `seure`
     - GCP_PROJECT_ID=<gcp-project-id>
     - IMAGE=gcr.io/<gcp-project-id>/<image-name>
     
-- logz.io token: `travis encrypt LOGZ_TOKEN=<your-token> --add`
+
 
 
 
