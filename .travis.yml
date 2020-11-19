@@ -24,7 +24,7 @@ jobs:
     script:
     - |-
       set -ex;
-      $DOCKER_KEY | docker login -u $DOCKER_USERNAME -p
+      docker login -u $DOCKER_USERNAME -p $DOCKER_KEY
       docker push $DOCKER_USERNAME/card
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
