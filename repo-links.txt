@@ -1,0 +1,2 @@
+Infrastructure: https://github.com/guberArmin/eksamen-infrastructure
+Applikasjon: https://github.com/guberArmin/devops-exam
