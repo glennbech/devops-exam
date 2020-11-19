@@ -8,7 +8,20 @@ Dette er applikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen.
 Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastructure).
 
 # Innholdsfortegnelse
-- [Krav til leveranse](#Krav til leveranse)
+- [Devops 2020 eksamen - Applikasjon](#devops-2020-eksamen---applikasjon)
+- [Innholdsfortegnelse](#innholdsfortegnelse)
+  * [Krav til leveranse](#krav-til-leveranse)
+  * [Krav til applikasjonen:](#krav-til-applikasjonen-)
+  * [Oppgave 1 - Docker](#oppgave-1---docker)
+  * [Oppgave 2 - Metrikker](#oppgave-2---metrikker)
+  * [Oppgave 3 - Logger](#oppgave-3---logger)
+  * [Oppgave 4 - Infrastruktur](#oppgave-4---infrastruktur)
+  * [Oppgave 5 og Overvåkning og varsling](#oppgave-5-og-overv-kning-og-varsling)
+  * [Oppgave 6 Valgfri IAC (infrastructure as code)](#oppgave-6-valgfri-iac--infrastructure-as-code-)
+- [Bruksanvisning](#bruksanvisning)
+  * [Konfigurasjon av hemligheter - applikasjon](#konfigurasjon-av-hemligheter---applikasjon)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 ## Krav til leveranse
 - [x] Besvarelsen skal bestå av en tekstfil med lenke til to repositories. Et repo for applikasjon, og et for infrastruktur:
     - Tekstfil fil lastet opp i besvarelsen
