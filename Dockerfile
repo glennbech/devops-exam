@@ -6,4 +6,4 @@ RUN mvn package -DskipTests
 
 FROM openjdk:8-jdk-alpine
 COPY --from=builder /app/target/cards.jar /app/cards.jar
-ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev","/app/cards.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prod","/app/cards.jar"]
