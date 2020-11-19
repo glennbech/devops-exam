@@ -2,14 +2,14 @@
 [![Build Status](https://travis-ci.com/guberArmin/devops-exam.svg?token=m6BpjWymm3UWnZ6QxDwC&branch=main)](https://travis-ci.com/guberArmin/devops-exam)
 
 
-#Devops 2020 eksamen - Aplikasjon
+# Devops 2020 eksamen - Aplikasjon
 Dette er aplikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen
 
-##Krav til leveranse
+## Krav til leveranse
 - [x] Besvarelsen skal bestå av en tekstfil med lenke til to repositories. Ett repo for applikasjon, og et for infrastruktur:
     - Tekstfil fil lastet opp i besvarelsen
 
-##Krav til applikasjonen:
+## Krav til applikasjonen:
 - [x] Applikasjonen skal eksponere et REST API og ha en database, gjerne "in memory" for eksempel H2
     - Applikasjonen oppfyller alle kravende, til s
 - [x] Applikasjonen skal bygge med Maven eller Gradle 
@@ -31,23 +31,23 @@ ikke til filer. I praksis vil dette si bruk av Logback eller Log4j via sl4j i Sp
 ## Oppgave 1 - Docker
  - Alle kravene er oppfylt og i tilegg deployer jeg docker image til `docker hub`.
  For oppsett av hemligheter [gå til bruksanvisning](#Bruksanvisning)
-Repository skal inneholde en .travis.yml fil som gjør travis i stand til å lage et docker image for
-hver commit som gjøres til Master branch. Dette container imaget skal deretter lastes opp til
-Google Container Registry. Dere skal demonstrere bruk av Docker multi-stage bygg, slik at
-også kompilering og pakking av applikasjonen skjer i en container.
-Det skal finnes en readme som beskriver hvordan sensor setter nødvendige hemmeligheter i
-Travis.
+
 - Naming convention: `InfluxDB - http_server_requests` i følge [micrometers.io](https://micrometer.io/docs/concepts#_timers)
 - endpoints
 
+## Oppgave 2 - Metrikker
+- Alle kravene i oppgaven er oppfylt. 
+- Når det gjelder `LongTaskTimer` var litt vanskelig å finne en ekte situasjon hvor det kan ta så 
+lang tid for min applikasjon å svare.
+Derfor valgte jeg å ha bare en timeout på 5 sekunder, på en av endpoints for å 
+simulere lang respons tid.
+- Siden applikasjon i container kjører uten influxDB jeg anbefaler at det leggess `logging.level.io.micrometer.influx:off` 
+i `src/main/resources/application.properties` for at man skal kunne se logging på riktig måten.
+- For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#Bruksanvisning).
+
+## Oppgave 3 - Logger
+ - Alle kravene i oppgaven er oppfylt. For oppsett av secrets [gå til bruksanvisning](#Bruksanvisning)
 # Bruksanvisning
-- LEGG TIL logz.io token inn som miljø variable til terraform og lokal
-- Lage logg eksempler
-- Deploy til flere providers
-- add status key to google cloud secrets
-- enable influx
-- prøve seg på: [google cloud uptime check](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/monitoring_uptime_check_config)
-- public repoer
 - nevne det om feil meldinger influx: logging.level.io.micrometer.influx:off`
 - opsgenie:
     - Read, Create and Update, Delete, Configuration Access for api key
