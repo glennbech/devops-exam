@@ -83,6 +83,8 @@ for opsgenie og noen av bruksområder til den.
 
 ## Konfigurasjon av hemligheter - applikasjon
 
+- Før man skal legge in nye hemligheter, må man slette alle globale variable
+som er `seure`
 - Docker hub username: `travis encrypt DOCKER_USERNAME=<your_username> --add`
 - Docker hub : `travis encrypt DOCKER_KEY=<your-key> --add`
     - For å opprete nøkkelen til Docker hub:
@@ -100,6 +102,8 @@ for opsgenie og noen av bruksområder til den.
     - GCP_PROJECT_ID=<gcp-project-id>
     - IMAGE=gcr.io/<gcp-project-id>/<image-name>
     
+- logz.io token: `travis encrypt LOGZ_TOKEN=<your-token> --add`
+
 
 
 

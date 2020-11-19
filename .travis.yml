@@ -26,6 +26,8 @@ jobs:
     script:
     - |-
       set -ex;
+      export $LOGZ=$LOGZ_TOKEN
+
       docker login -u $DOCKER_USERNAME -p $DOCKER_KEY
       docker build -t $DOCKER_USERNAME/card:${TRAVIS_COMMIT} .
       docker push $DOCKER_USERNAME/"card:${TRAVIS_COMMIT}"
