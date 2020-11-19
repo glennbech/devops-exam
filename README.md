@@ -16,12 +16,11 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
   * [Oppgave 2 - Metrikker](#oppgave-2---metrikker)
   * [Oppgave 3 - Logger](#oppgave-3---logger)
   * [Oppgave 4 - Infrastruktur](#oppgave-4---infrastruktur)
-  * [Oppgave 5 og Overvåkning og varsling](#oppgave-5-og-overv-kning-og-varsling)
-  * [Oppgave 6 Valgfri IAC (infrastructure as code)](#oppgave-6-valgfri-iac--infrastructure-as-code-)
+  * [Oppgave 5 og Overvåkning og varsling](#oppgave-5-og-overvåkning-og-varsling)
+  * [Oppgave 6 Valgfri IAC (infrastructure as code)](#oppgave-6-valgfri-iac)
 - [Bruksanvisning](#bruksanvisning)
   * [Konfigurasjon av hemligheter - applikasjon](#konfigurasjon-av-hemligheter---applikasjon)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 ## Krav til leveranse
 - [x] Besvarelsen skal bestå av en tekstfil med lenke til to repositories. Et repo for applikasjon, og et for infrastruktur:
     - Tekstfil fil lastet opp i besvarelsen
@@ -76,7 +75,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
  - Alle kravene er oppfylt.  
  - For oppsett av secrets [gå til bruksanvisning](#Bruksanvisning)
 
-## Oppgave 6 Valgfri IAC (infrastructure as code)
+## Oppgave 6 Valgfri IAC
 - Her valgte jeg å bruke [opsgenie](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs)
 - Det er ganske kraftig verktøy som kan gjøre varsling og schedueling. Vi kan opprete brukere og legge dem
  i lag. Tildele dem forskjellige skift, slik at de har ansvar for drift av aplikasjon i en vis periode osv.
