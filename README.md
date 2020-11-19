@@ -3,9 +3,12 @@
 
 
 # Devops 2020 eksamen - Applikasjon
-Dette er applikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen
-Infrastrukr repoen finnes [her](https://github.com/guberArmin/eksamen-infrastructure)
+Dette er applikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen.
 
+Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastructure).
+
+# Innholdsfortegnelse
+- [Krav til leveranse](#Krav til leveranse)
 ## Krav til leveranse
 - [x] Besvarelsen skal bestå av en tekstfil med lenke til to repositories. Et repo for applikasjon, og et for infrastruktur:
     - Tekstfil fil lastet opp i besvarelsen
@@ -102,7 +105,7 @@ som er `seure`
     - GCP_PROJECT_ID=<gcp-project-id>
     - IMAGE=gcr.io/<gcp-project-id>/<image-name>
     
-
+- logz.io token: `travis encrypt LOGZ_TOKEN=<your-token> --add`
 
 
 
