@@ -26,11 +26,11 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
 
 ## Krav til leveranse
 - [x] Besvarelsen skal bestå av en tekstfil med lenke til to repositories. Et repo for applikasjon, og et for infrastruktur:
-    - Tekstfil fil lastet opp i besvarelsen
+    - Tekstfil lastet opp i besvarelsen
 
 ## Krav til applikasjonen:
 - [x] Applikasjonen skal eksponere et REST API og ha en database, gjerne "in memory" for eksempel H2
-    - Applikasjonen oppfyller alle kravene, til s
+    - Applikasjonen oppfyller alle overnevnte krav.
 - [x] Applikasjonen skal bygge med Maven eller Gradle 
     - Jeg har valgt maven
 - [x] Applikasjonen kan skrives i Java eller Kotlin
@@ -62,7 +62,7 @@ denne tilfelle. Når container bygges, da brukes det `application-prod.propertie
 `-Dspring.profiles.active=prod` i Dockerfile `Entrypoint`. I `application-prod.properties` slår jeg av 
 influxDB logging for å slippe å ha masse errors, og for at logging skal være meningsfull.
 - Når det gjelder navngivning konvensjoner har jeg brukt underscore mellom ord  (`http_server_requests`) 
-basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_timers)
+basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_naming_meters)
 - For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#api-calls-med-eksempel-data).
 
 ## Oppgave 3 - Logger
@@ -76,7 +76,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 
 ## Oppgave 5 og Overvåkning og varsling
  - Alle kravene er oppfylt.  
- - For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning)
+ - For oppsett av hemmeligheter [gå til infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure)
 
 ## Oppgave 6 Valgfri IAC
 - Her valgte jeg å bruke [opsgenie](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs)
