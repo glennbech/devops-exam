@@ -41,4 +41,4 @@ build/
 /influxdb
 types.db
 
-src/main/resources/logback.xml
+repo-links.txt
