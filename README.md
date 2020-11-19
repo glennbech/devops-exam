@@ -23,15 +23,24 @@ Dette er aplikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen
     deploye den hvis første stege er `passing` 
 - [x] Applikasjonen skal være skrevet på en slik måte at drift og vedlikehold er enkelt og i henhold til prinsipper i the "twelve factor app"
 To prinsipper gjelder for eksamen *
-     - III Config. Ingen hemmeligheter eller konfigurasjon i applikasjonen (ingen config filer med passord/brukere/URLer osv). 
+     - [x] III Config. Ingen hemmeligheter eller konfigurasjon i applikasjonen (ingen config filer med passord/brukere/URLer osv). 
      Vi har lært teknikker i faget for å eksternalisere konfigurasjon. Pass godt på å ikke sjekke inn API nøkler osv.
-     - XI Logs. Applikasjonen skal bruke et rammeverk for logging, og logge til standard-out,
+     - [x] XI Logs. Applikasjonen skal bruke et rammeverk for logging, og logge til standard-out,
 ikke til filer. I praksis vil dette si bruk av Logback eller Log4j via sl4j i Spring Boot, med en
 "Console appender". Ikke bruk System.out.println();
-Brudd på overnevnte prinsipper vil gi trekk i poeng i den oppgaven der bruddet skjer
+## Oppgave 1 - Docker
+ - Alle kravene er oppfylt og i tilegg deployer jeg docker image til `docker hub`.
+ For oppsett av hemligheter [gå til bruksanvisning](#Bruksanvisning)
+Repository skal inneholde en .travis.yml fil som gjør travis i stand til å lage et docker image for
+hver commit som gjøres til Master branch. Dette container imaget skal deretter lastes opp til
+Google Container Registry. Dere skal demonstrere bruk av Docker multi-stage bygg, slik at
+også kompilering og pakking av applikasjonen skjer i en container.
+Det skal finnes en readme som beskriver hvordan sensor setter nødvendige hemmeligheter i
+Travis.
 - Naming convention: `InfluxDB - http_server_requests` i følge [micrometers.io](https://micrometer.io/docs/concepts#_timers)
 - endpoints
 
+# Bruksanvisning
 - LEGG TIL logz.io token inn som miljø variable til terraform og lokal
 - Lage logg eksempler
 - Deploy til flere providers
