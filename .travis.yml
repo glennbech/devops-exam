@@ -4,8 +4,6 @@ env:
   - IMAGE=gcr.io/devops-examen-2020/card
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
   - LOGZ_URL=https://listener.logz.io:8071
-  - secure: 5lVW3OG7Yp3MAkX//2G8Y6BOZlX6zulb2fqPtz5DK5SkBORkrdZAWSn8YTM7bguH1J/i7WSeSFvUSb6hHAfhTKZNKWos0lIAX3oI6SE+VhdVyGyupGi0u1L9RhHtBWm+6M4aaImPeODHqs6L+axtqy8q8jA5a4opAZeYTdomP1oMZe0b/lKb5ulTky8l6nseqkLsQzUYHCQCkJokGc3EncXasVA9em7NAAs+WzScwqnCadvW3FOl58E/HYCu4Y1ctXm0LOeeR3DaIiQu80FHeHwofNsTqcX9vQ64oTwlOES8L7Lxh/55giyd3qFeeh6tRSjOfhnmkd3uuZc6EgpYwKTQLIA2E+aiQx3JnyRGYKJfNW/dQOaRPo1UmVZsRv7tPoCDO0W4MJuWHW3D4dFBjoYv7rVcNkPzkWGoeDPk5ZYyeM7IhN2PRLjWiY7bJhvo/lwjLZ2ZDK/7uPYXUDjuC/ldYShJSQNhPG9WWbsMeLMD5/9Pcg/UX4sFCSEyI16PdhWjrUcTJkEjLBCSpKivBDcBM0/fdV+t/+Wpc2dXLD56GnmTabpTOpmXZhmW2XsRVfkpdB4/vr8SQPEWzZSVK5dMkzCvJIAWCMlU76WTKK8sbSdBhgMiwGRZ7EeSZ/QAn4upPAOUuRO4vtTcgzlCZtU+qQnKFPzOQwjxDpUvO34=
-  - secure: oizAhCkHdz8oInC04ojzAJOjsetRomg6wQZhvSDPq4ioFQvJMr4nwr+UGqQff6SRNH209r/RCFGOPAQCZ/IKnZ8GN6DCyEmcqh+HkRY6D+lXYJcEvUtFQGWM89baQVG/5ZT/oIyFLWmDKN10C2GGiJ7FwI4THCbgh7FqvPMGiXBeiF4ZOGLm9JAHc4jXfVLrZkGmCssCNILtZpVIlWNWtPtaGuir+aCDsKK9CJeTlc3oTVtJp8nokl34ItiLti6c4jkD2h23Vtz75pFKBW5h0lSl1Ns4TiZOgPDgZhkQm1usRdQYurjw3Zm6s4kIc07WXucUhVXHUuDdNUtEanmvNvKcNYhkWw0cmeAxdxKMfg/JBdTLljw0sANs2bHX9b3AtgrRgGg4TEcY4nmGkzBcCnabh/ndigHvHlKE9oSJcWiHx3VQtXXWknYbyRfe9AAB6MTwcL8Bk94QizSo032G6hjwSCDkkMbRXM4ZQNxr9kE8amEcQeKbIun/XxRaign6Ev3kQ3xm5lippGuiCj5I12A9dtL9WndB/wz50JGU6m/msLr2yaDYVC2Cjs5kWxo8mNr+Ki9MiMc4fWxqVqY7xoMO2HLbFZBMLU4+G5EVhPFI5lcFgeu1QD7R6YRJ9tWms7zUGp7ONmyupYUjY5CNmMh3gURlrfn7gmvz0vu0mUA=
   - secure: Lubj1XL67GBs/EjENCUTOXg2YKHz5vyAvgxYgu1Xkkko+opVSlSD47sV1b6TgLxpjBkJowI1eHModmildSHos20AUxMk3/HtmK/ZfUsfHujCFC8tlpHf0npEQg6TeJpyCe/wpxVnHMdLwGWOpm7rQqF6/vcfLtNdRy/Ti9hoYV3G89AEgskiG5mT33vbLOX2XRrQ4SW2grt32CZiNU8YaykGUG8ycoqlCjsGeW/iC8rBFzJ+dbvbMdj6NYUkgjO3ivUV2pRKkBmNTaSGb8gMcKouJhN1k3qdZffFor6aGNzDHlmK9lkkejQ5Lz7WKzxjO8ixdFTyABXHFXVplXpKkgWcvYn85F3Fiaw++yd8kYPtFgfxGurkPpxxQnl78nt/AN/+wVEpKRKo8+ero8aG5WBUo2rVJlO5tYGqVl1XNQX/CS+sXbZxlkBkiX9cdEWzvf8pCPTdJAGIsTtACpMKgMlsCk8JfsvHQgxKCUmrDAaFc/HSlKWKGMuhzEGqhetYmhHfcDvDb4oAKNVLTeljuebt0EWo1rxAnncEmnrKy/1SQHf/b0NOcxyVE0MA9QHseBpQ/b3qNd4vTaGNdP427oetfmJ/PhPzFPuwIBrtKzIMuWjeWXarGrvBkjTgRLwLZ+YJhFfU+K5ABUTD4iWgbH1tJJ+mHD+fBSApEvGLCTs=
 jobs:
   include:
@@ -27,9 +25,6 @@ jobs:
     - |-
       set -ex;
 
-      docker login -u $DOCKER_USERNAME -p $DOCKER_KEY
-      docker build -t $DOCKER_USERNAME/card:${TRAVIS_COMMIT} .
-      docker push $DOCKER_USERNAME/"card:${TRAVIS_COMMIT}"
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
