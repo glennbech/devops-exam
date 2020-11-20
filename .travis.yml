@@ -2,7 +2,7 @@ env:
   global:
   - GCP_PROJECT_ID=devops-examen-2020
   - IMAGE=gcr.io/devops-examen-2020/card
-  - AZURE_IMAGE = eksamen.azurecr.io/card
+  - AZURE_IMAGE=eksamen.azurecr.io/card
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
   - LOGZ_URL=https://listener.logz.io:8071
   - APP_URL=62d7a32d-d20c-4d54-a85f-0060119798d3
