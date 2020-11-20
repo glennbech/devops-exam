@@ -4,6 +4,8 @@ env:
   - IMAGE=gcr.io/devops-examen-2020/card
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
   - LOGZ_URL=https://listener.logz.io:8071
+  - $APP_URL=62d7a32d-d20c-4d54-a85f-0060119798d3
+  - $TENANT=ecf620ff-452b-498d-80a3-7724532966ca
   - secure: Lubj1XL67GBs/EjENCUTOXg2YKHz5vyAvgxYgu1Xkkko+opVSlSD47sV1b6TgLxpjBkJowI1eHModmildSHos20AUxMk3/HtmK/ZfUsfHujCFC8tlpHf0npEQg6TeJpyCe/wpxVnHMdLwGWOpm7rQqF6/vcfLtNdRy/Ti9hoYV3G89AEgskiG5mT33vbLOX2XRrQ4SW2grt32CZiNU8YaykGUG8ycoqlCjsGeW/iC8rBFzJ+dbvbMdj6NYUkgjO3ivUV2pRKkBmNTaSGb8gMcKouJhN1k3qdZffFor6aGNzDHlmK9lkkejQ5Lz7WKzxjO8ixdFTyABXHFXVplXpKkgWcvYn85F3Fiaw++yd8kYPtFgfxGurkPpxxQnl78nt/AN/+wVEpKRKo8+ero8aG5WBUo2rVJlO5tYGqVl1XNQX/CS+sXbZxlkBkiX9cdEWzvf8pCPTdJAGIsTtACpMKgMlsCk8JfsvHQgxKCUmrDAaFc/HSlKWKGMuhzEGqhetYmhHfcDvDb4oAKNVLTeljuebt0EWo1rxAnncEmnrKy/1SQHf/b0NOcxyVE0MA9QHseBpQ/b3qNd4vTaGNdP427oetfmJ/PhPzFPuwIBrtKzIMuWjeWXarGrvBkjTgRLwLZ+YJhFfU+K5ABUTD4iWgbH1tJJ+mHD+fBSApEvGLCTs=
 jobs:
   include:
@@ -13,6 +15,8 @@ jobs:
     services:
     - docker
     before_install:
+    - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    - az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
     - openssl aes-256-cbc -K $encrypted_98d237b7dbf4_key -iv $encrypted_98d237b7dbf4_iv
       -in google-key.json.enc -out google-key.json -d
     - curl https://sdk.cloud.google.com | bash > /dev/null
@@ -25,6 +29,7 @@ jobs:
     - |-
       set -ex;
 
+      docker push eksamen.azurecr.io/cards:${TRAVIS_COMMIT}
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
