@@ -23,6 +23,7 @@ jobs:
     - curl https://sdk.cloud.google.com | bash > /dev/null
     - source "$HOME/google-cloud-sdk/path.bash.inc"
     - az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
+    - az acr login --name eksamen
     - gcloud auth activate-service-account --key-file=google-key.json
     - gcloud auth configure-docker
     - gcloud config set project "${GCP_PROJECT_ID}"
