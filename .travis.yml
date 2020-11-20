@@ -32,6 +32,7 @@ jobs:
       set -ex;
 
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
+      docker build -t "${AZURE_IMAGE}:${TRAVIS_COMMIT}" . && \
       docker push "${AZURE_IMAGE}:${TRAVIS_COMMIT}" && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
