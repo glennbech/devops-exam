@@ -18,10 +18,10 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
   * [Oppgave 5 og Overvåkning og varsling](#oppgave-5-og-overvåkning-og-varsling)
   * [Oppgave 6 Valgfri IAC (infrastructure as code)](#oppgave-6-valgfri-iac)
 - [Bruksanvisning](#bruksanvisning)
-  * [Konfigurasjon av hemligheter - applikasjon](#konfigurasjon-av-hemligheter---applikasjon)
+  * [Konfigurasjon av hemmeligheter - applikasjon](#konfigurasjon-av-hemmeligheter---applikasjon)
   * [API design og bruk av API](#api-design-og-bruk-av-api)
     * [Kort om API](#kort-om-api)
-    * [API calls med eksempel data](#api-calls-med-eksempel-data)
+    * [API calls med eksempeldata](#api-calls-med-eksempel-data)
     
 
 ## Krav til leveranse
@@ -30,7 +30,7 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
 
 ## Krav til applikasjonen:
 - [x] Applikasjonen skal eksponere et REST API og ha en database, gjerne "in memory" for eksempel H2
-    - Applikasjonen oppfyller alle overnevnte krav.
+    - Applikasjonen oppfyller alle ovennevnte krav.
 - [x] Applikasjonen skal bygge med Maven eller Gradle 
     - Jeg har valgt maven
 - [x] Applikasjonen kan skrives i Java eller Kotlin
@@ -48,7 +48,7 @@ To prinsipper gjelder for eksamen *
 ikke til filer. I praksis vil dette si bruk av Logback eller Log4j via sl4j i Spring Boot, med en
 "Console appender". Ikke bruk System.out.println();
 ## Oppgave 1 - Docker
- - Alle kravene er oppfylt og i tillegg deployer jeg docker image til `docker hub`.
+ - Alle kravene er oppfylt.
  For oppsett av hemmeligheter [gå til bruksanvisning](#docker)
 
 ## Oppgave 2 - Metrikker
@@ -67,7 +67,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 
 ## Oppgave 3 - Logger
  - Alle kravene i oppgaven er oppfylt. 
- - Jeg har valgt å logge alt som er info eller høyre nivå.
+ - Jeg har valgt å logge alt som er info eller høyere nivå.
  - For oppsett av hemmeligheter [gå til bruksanvisning](#Bruksanvisning).
 
 ## Oppgave 4 - Infrastruktur
@@ -79,40 +79,24 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
  - For oppsett av hemmeligheter [gå til infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
 
 ## Oppgave 6 Valgfri IAC
-- Her valgte jeg å bruke [opsgenie](https://registry.terraform.io/providers/opsgenie/opsgenie/latest/docs)
-- Det er ganske kraftig verktøy som kan gjøre varsling og schedueling. Vi kan opprete brukere og legge dem
+- Her valgte jeg å bruke en SaaS tjeneste [PagerDuty](https://www.pagerduty.com/)
+- Det er ganske kraftig verktøy som kan bla. gjøre varsling og scheduling. Vi kan opprette brukere og legge dem
  i lag. Tildele dem forskjellige skift, slik at de har ansvar for drift av aplikasjon i en vis periode osv.
-- En av grunene at jeg har valgt opsgenie er at den kan intregeres med status cake
-Siden vi har allerede brukt statuscake, i oppgaven 5, tenkte jeg at det var en bra måte å utvide på oppgaven.
-- Mer om hvordan man kan integrere statuscake med opsginie finnes [her](https://docs.opsgenie.com/docs/statuscake-integration).
-Opsette er ikke vanskelig, og er godt dokumentert.
-- En av ulemper med opsgenie er at det er ikke slik at alt av funskjonaliteten er gratis.
-Men jeg tror at jeg har klart å bruke de som er gratis på en fornuftig måte, slik at jeg kan vise forståelset 
-for opsgenie og noen av bruksområder til den.
-- Flere detaljer om selve infrastrukturen finnes på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
+- En av grunnene at jeg har valgt PagerDuty er at den kan integreres med status cake
+Siden vi har allerede brukt statuscake, i oppgaven 5, tenkte jeg at det var en bra måte å gjøre statuscake enda nyttigere.
+- Mer om hvordan man kan integrere statuscake med PagerDuty på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
  
  ```
-    StatusCake is a SaaS based web site monitoring service, providing you various kinds of statistics, 
-    analytics and information about your website`s downtime. Opsgenie is an alert and notification 
-    management solution that is highly complementary to StatusCake.
+StatusCake offers unlimited website and feature-rich website monitoring. 
+Through the use of StatusCake, you can aggregate your alerts in one handy view and efficiently pipe them 
+into PagerDuty.
 ```
-
 # Bruksanvisning
 
-## Konfigurasjon av hemligheter - applikasjon
+## Konfigurasjon av hemmeligheter - applikasjon
 
-- Før man skal legge in nye hemligheter, må man slette alle globale variable
-som er `seure`
-- <a name="docker">Docker hub username:</a> `travis encrypt DOCKER_USERNAME=<your_username> --add`
-- Docker hub : `travis encrypt DOCKER_KEY=<your-key> --add`
-    - For å opprete nøkkelen til Docker hub:
-        - Trykk på profil bruker navn opp til høyre
-        - `Account settings`
-        - `Security`
-        - `New access token`
-        - Velg navn og trykk `Create`
 - GCP service account credentials: `travis encrypt-file <file-name>.json --add`
-    - Service account må have følgende tilatelser (roles):
+    - Service account må have følgende tillatelser (roles):
          - Service Account User
          - Cloud Run Admin
          - Storage Admin
@@ -124,21 +108,21 @@ som er `seure`
 ## API design og bruk av API
 
 ### Kort om API
-Jeg har valgt å lage en enkel RESTful API i SpringBoot. Her kan man oprette brukere, tildele dem
+Jeg har valgt å lage en enkel RESTful API i SpringBoot. Her kan man opprette brukere, tildele dem
 tilfeldige kort (cca. 100 forskjellige kort). Se bildene til kort (bilder er 
-egentlig svg streng). Siden det vær ikke fokuset på selve applikasjonen har jeg
+egentlig svg streng). Siden det var ikke fokuset på selve applikasjonen har jeg
 ikke brukt tid på sikkerhet eller GUI.
 
-### API calls med eksempel data
+### API calls med eksempeldata
 
 For å teste API har jeg brukt [postman](https://www.postman.com/).
 
 - `GET /api`
     - Returnerer 200 med `Wellcome to homepage` streng. Brukes som endpoint som
-    statuscake skal kontrolere
+    statuscake skal kontrollere
     
 - `POST /api/user`
-    - Brukes for å opprete ny bruker.
+    - Brukes for å opprette ny bruker.
       
           Forventet payload:          
                     
@@ -167,3 +151,5 @@ For å teste API har jeg brukt [postman](https://www.postman.com/).
       Dette er endpoint som brukes for å simulere stor belasting på serveren,
       som fører til lang beregningstid. Grunnen til at jeg har den er for å
       bruke `LongTaskTimer`. 
+
+
