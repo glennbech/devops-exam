@@ -2,13 +2,9 @@ env:
   global:
   - GCP_PROJECT_ID=devops-examen-2020
   - IMAGE=gcr.io/devops-examen-2020/card
-  - AZURE_IMAGE=eksamen.azurecr.io/card
   - CLOUDSDK_CORE_DISABLE_PROMPTS=1
   - LOGZ_URL=https://listener.logz.io:8071
-  - APP_URL=62d7a32d-d20c-4d54-a85f-0060119798d3
-  - TENANT=ecf620ff-452b-498d-80a3-7724532966ca
   - secure: Lubj1XL67GBs/EjENCUTOXg2YKHz5vyAvgxYgu1Xkkko+opVSlSD47sV1b6TgLxpjBkJowI1eHModmildSHos20AUxMk3/HtmK/ZfUsfHujCFC8tlpHf0npEQg6TeJpyCe/wpxVnHMdLwGWOpm7rQqF6/vcfLtNdRy/Ti9hoYV3G89AEgskiG5mT33vbLOX2XRrQ4SW2grt32CZiNU8YaykGUG8ycoqlCjsGeW/iC8rBFzJ+dbvbMdj6NYUkgjO3ivUV2pRKkBmNTaSGb8gMcKouJhN1k3qdZffFor6aGNzDHlmK9lkkejQ5Lz7WKzxjO8ixdFTyABXHFXVplXpKkgWcvYn85F3Fiaw++yd8kYPtFgfxGurkPpxxQnl78nt/AN/+wVEpKRKo8+ero8aG5WBUo2rVJlO5tYGqVl1XNQX/CS+sXbZxlkBkiX9cdEWzvf8pCPTdJAGIsTtACpMKgMlsCk8JfsvHQgxKCUmrDAaFc/HSlKWKGMuhzEGqhetYmhHfcDvDb4oAKNVLTeljuebt0EWo1rxAnncEmnrKy/1SQHf/b0NOcxyVE0MA9QHseBpQ/b3qNd4vTaGNdP427oetfmJ/PhPzFPuwIBrtKzIMuWjeWXarGrvBkjTgRLwLZ+YJhFfU+K5ABUTD4iWgbH1tJJ+mHD+fBSApEvGLCTs=
-  - secure: EuglSDX2AWhWoIcSQItzAJf/njhQkCYEv5U2htgZwXzh7cx4hhudJqeALcI4ojjDercu/3/NXbyl2g7wnvi8ydaTxsOrW/MnFI90o3QUJ7uG1UACkRl40ZQo62XfHAnEvnPwGfCU4OSlGa7bwdHzATFix9uXL6kYiI7I0PFYhbwcDkV8KYh2Dy5FVoNTSnHp3In1JHDMDsQ2r/Xz70gtVAVG35BPHMcgDI+fbT8lqMjk77O5EYiQjPduTHKB6eSDAVtm5mB0uQvCowNRjAIdIYbluKkCFEiVsuFe9/GjO3oTfGWx60BTqiLaCX7LzV7j2YzdYPNtdy8IRpM9Rb51AJuhIaLopQ70lP8CbCj8QnmK5f+oqWV139ybGnP+KiGehZ567xeRs1ikmpwPfnp3aryCfB7Oj+mYvr7ZGMkDftSRGkvAs6aC/Id72etGH0CTiMTn5hWPOCvP+AB8QrY4Z7MykJvHRkc0KY3jV4Oo5ZcPztAlLUOiIRuzJeHYh6J/5Pzph4j30OLlEXI4TGGaLUDkFhZEfSxMQLe6sTMSteRhCpGj/ThJ19hpa96IpD7006qJehzLECCevqdWEkWOB6tEDWiSU6m7sAY0eEfRnpRDqzsa4ZknZ1FWS3bE2vsZ+ko9JB1VQ9sbYjExdHIk5yUE7GdurPFXXv4qw5pR+Y0=
 jobs:
   include:
   - stage: runTests
@@ -17,13 +13,10 @@ jobs:
     services:
     - docker
     before_install:
-    - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     - openssl aes-256-cbc -K $encrypted_98d237b7dbf4_key -iv $encrypted_98d237b7dbf4_iv
       -in google-key.json.enc -out google-key.json -d
     - curl https://sdk.cloud.google.com | bash > /dev/null
     - source "$HOME/google-cloud-sdk/path.bash.inc"
-    - az login --service-principal -u $APP_URL  -p $AZURE_PASSWORD --tenant $TENANT
-    - az acr login --name eksamen
     - gcloud auth activate-service-account --key-file=google-key.json
     - gcloud auth configure-docker
     - gcloud config set project "${GCP_PROJECT_ID}"
@@ -32,7 +25,5 @@ jobs:
     - |-
       set -ex;
       docker build -t "${IMAGE}:${TRAVIS_COMMIT}" . && \
-      docker build -t "${AZURE_IMAGE}:${TRAVIS_COMMIT}" . && \
-      docker push "${AZURE_IMAGE}:${TRAVIS_COMMIT}" && \
       docker push "${IMAGE}:${TRAVIS_COMMIT}" && \
       set +x
