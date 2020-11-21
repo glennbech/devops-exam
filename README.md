@@ -44,7 +44,7 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
 To prinsipper gjelder for eksamen *
      - [x] III Config. Ingen hemmeligheter eller konfigurasjon i applikasjonen (ingen config filer med passord/brukere/URLer osv). 
      Vi har lært teknikker i faget for å eksternalisere konfigurasjon. Pass godt på å ikke sjekke inn API nøkler osv.
-     - [x] XI Logs. Applikasjonen skal bruke et rammeverk for logging, og logge til standard-out,
+     - [x] XI Logs. Applikasjonen skal bruke et rammeverk for logging, og logger til standard-out,
 ikke til filer. I praksis vil dette si bruk av Logback eller Log4j via sl4j i Spring Boot, med en
 "Console appender". Ikke bruk System.out.println();
 ## Oppgave 1 - Docker
@@ -81,7 +81,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 ## Oppgave 6 Valgfri IAC
 - Her valgte jeg å bruke en SaaS tjeneste [PagerDuty](https://www.pagerduty.com/)
 - Det er ganske kraftig verktøy som kan bla. gjøre varsling og scheduling. Vi kan opprette brukere og legge dem
- i lag. Tildele dem forskjellige skift, slik at de har ansvar for drift av aplikasjon i en vis periode osv.
+ i lag. Tildele dem forskjellige skift, slik at de har ansvar for drift av applikasjoner i en viss periode osv.
 - En av grunnene at jeg har valgt PagerDuty er at den kan integreres med statuscake.
 Siden vi har allerede brukt statuscake, i oppgaven 5, tenkte jeg at det var en bra måte å gjøre statuscake enda nyttigere.
 - Mer om hvordan man kan integrere statuscake med PagerDuty på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
@@ -110,7 +110,7 @@ into PagerDuty.
 
 ### Kort om API
 Jeg har valgt å lage en enkel RESTful API i SpringBoot. Her kan man opprette brukere, tildele dem
-tilfeldige kort (cca. 100 forskjellige kort). Se bildene til kort (bilder er 
+tilfeldige kort (ca. 100 forskjellige kort). Se bildene til kort (bilder er 
 egentlig svg streng). Siden det var ikke fokuset på selve applikasjonen har jeg
 ikke brukt tid på sikkerhet eller GUI.
 
@@ -152,5 +152,7 @@ For å teste API har jeg brukt [postman](https://www.postman.com/).
       Dette er endpoint som brukes for å simulere stor belasting på serveren,
       som fører til lang beregningstid. Grunnen til at jeg har den er for å
       bruke `LongTaskTimer`. 
+
+
 
 
