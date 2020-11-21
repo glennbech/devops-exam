@@ -84,7 +84,8 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
  i lag. Tildele dem forskjellige skift, slik at de har ansvar for drift av applikasjoner i en viss periode osv.
 - En av grunnene at jeg har valgt PagerDuty er at den kan integreres med statuscake.
 Siden vi har allerede brukt statuscake, i oppgaven 5, tenkte jeg at det var en bra måte å gjøre statuscake enda nyttigere.
-- Mer om hvordan man kan integrere statuscake med PagerDuty på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure#pagerduty).
+- Mer om hvordan man har jeg brukt  `PagerDuty` og hvordan
+kan man integrere statuscake med den finnes på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure#pagerduty).
  
  ```
 StatusCake offers unlimited website and feature-rich website monitoring. 
