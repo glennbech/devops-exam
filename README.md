@@ -49,7 +49,7 @@ ikke til filer. I praksis vil dette si bruk av Logback eller Log4j via sl4j i Sp
 "Console appender". Ikke bruk System.out.println();
 ## Oppgave 1 - Docker
  - Alle kravene er oppfylt.
- For oppsett av hemmeligheter [gå til bruksanvisning](#docker)
+ For oppsett av hemmeligheter [gå til bruksanvisning](#bruksanvisning)
 
 ## Oppgave 2 - Metrikker
 - Alle kravene i oppgaven er oppfylt. 
