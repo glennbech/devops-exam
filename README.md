@@ -5,7 +5,7 @@
 # Devops 2020 eksamen - Applikasjon
 Dette er applikasjon repository til `Devops i Skyen [PGR301-1 20H]` eksamen.
 
-Infrastruktur repoen finnes [her](https://github.com/guberArmin/devops-exam#konfigurasjon-av-hemmeligheter---applikasjon).
+Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastructure).
 
 # Innholdsfortegnelse
 - [Innholdsfortegnelse](#innholdsfortegnelse)
