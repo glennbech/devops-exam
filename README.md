@@ -60,7 +60,8 @@ simulere lang responstid.
 - Siden applikasjon i container kjører uten influxDB har jeg laget egen profil for spring boot for 
 denne tilfelle. Når container bygges, da brukes det `application-prod.properties` ved å legge 
 `-Dspring.profiles.active=prod` i Dockerfile `Entrypoint`. I `application-prod.properties` slår jeg av 
-influxDB logging for å slippe å ha masse errors, og for at logging skal være meningsfull.
+micrometer logging for å slippe å ha masse errors, og for at logging skal være meningsfull. Dette påvirker ikke
+lokal kjøring av applikasjon.
 - Når det gjelder navngivning konvensjoner har jeg brukt underscore mellom ord  (`http_server_requests`) 
 basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_naming_meters).
 - For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#api-calls-med-eksempeldata).
@@ -153,7 +154,3 @@ For å teste API har jeg brukt [postman](https://www.postman.com/).
       Dette er endpoint som brukes for å simulere stor belasting på serveren,
       som fører til lang beregningstid. Grunnen til at jeg har den er for å
       bruke `LongTaskTimer`. 
-
-
-
-
