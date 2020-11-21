@@ -96,7 +96,7 @@ into PagerDuty.
 
 ## Konfigurasjon av hemmeligheter - applikasjon
 
-- Man må slette hemmeligheter som er i `.travis.yml` før man skal legge inn nye.
+- Man må slette hemmeligheter som er i `.travis.yml` før man skal legge inn sine hemmeligheter.
 - GCP service account credentials: `travis encrypt-file <file-name>.json --add`
     - Service account må have følgende tillatelser (roles):
          - Service Account User
