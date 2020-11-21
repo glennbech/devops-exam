@@ -82,7 +82,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 - Her valgte jeg å bruke en SaaS tjeneste [PagerDuty](https://www.pagerduty.com/)
 - Det er ganske kraftig verktøy som kan bla. gjøre varsling og scheduling. Vi kan opprette brukere og legge dem
  i lag. Tildele dem forskjellige skift, slik at de har ansvar for drift av aplikasjon i en vis periode osv.
-- En av grunnene at jeg har valgt PagerDuty er at den kan integreres med status cake
+- En av grunnene at jeg har valgt PagerDuty er at den kan integreres med statuscake.
 Siden vi har allerede brukt statuscake, i oppgaven 5, tenkte jeg at det var en bra måte å gjøre statuscake enda nyttigere.
 - Mer om hvordan man kan integrere statuscake med PagerDuty på [infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
  
@@ -95,6 +95,7 @@ into PagerDuty.
 
 ## Konfigurasjon av hemmeligheter - applikasjon
 
+- Man må slette hemmeligheter som er i `.travis.yml` før man skal legge inn nye.
 - GCP service account credentials: `travis encrypt-file <file-name>.json --add`
     - Service account må have følgende tillatelser (roles):
          - Service Account User
@@ -144,7 +145,7 @@ For å teste API har jeg brukt [postman](https://www.postman.com/).
 
 
 - `GET /api/imgs/{imgId}`
-    - Hent bilde med imgId (og vise den fram i browseren).
+    - Hent bilde med imgId (og vise den fram i nettleseren).
 
 - `GET /api/reflect/{msg}`
     - Returnerer `msg` tilbake til brukeren.
