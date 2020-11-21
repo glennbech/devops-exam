@@ -77,7 +77,7 @@ basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_
 
 ## Oppgave 5 og Overvåkning og varsling
  - Alle kravene er oppfylt.  
- - For oppsett av hemmeligheter [gå til infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure).
+ - For oppsett av hemmeligheter [gå til infrastruktur repoen](https://github.com/guberArmin/eksamen-infrastructure##konfigurasjon-av-hemmeligheter---infrastruktur).
 
 ## Oppgave 6 Valgfri IAC
 - Her valgte jeg å bruke en SaaS tjeneste [PagerDuty](https://www.pagerduty.com/)
