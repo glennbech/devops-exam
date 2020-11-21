@@ -120,6 +120,8 @@ ikke brukt tid på sikkerhet eller GUI.
 
 For å teste API har jeg brukt [postman](https://www.postman.com/).
 
+Link til kjørende container, som er deployet på GCP, finner man [her](https://container-runner-tdb5q4snla-uc.a.run.app/api).
+
 - `GET /api`
     - Returnerer 200 med `Wellcome to homepage` streng. Brukes som endpoint som
     statuscake skal kontrollere
