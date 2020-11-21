@@ -21,7 +21,7 @@ Infrastruktur repoen finnes [her](https://github.com/guberArmin/eksamen-infrastr
   * [Konfigurasjon av hemmeligheter - applikasjon](#konfigurasjon-av-hemmeligheter---applikasjon)
   * [API design og bruk av API](#api-design-og-bruk-av-api)
     * [Kort om API](#kort-om-api)
-    * [API calls med eksempeldata](#api-calls-med-eksempel-data)
+    * [API calls med eksempeldata](#api-calls-med-eksempeldata)
     
 
 ## Krav til leveranse
