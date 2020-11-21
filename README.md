@@ -63,7 +63,7 @@ denne tilfelle. Når container bygges, da brukes det `application-prod.propertie
 influxDB logging for å slippe å ha masse errors, og for at logging skal være meningsfull.
 - Når det gjelder navngivning konvensjoner har jeg brukt underscore mellom ord  (`http_server_requests`) 
 basert på dokumentasjon: [micrometers.io](https://micrometer.io/docs/concepts#_naming_meters).
-- For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#api-calls-med-eksempel-data).
+- For detaljert informasjon om endpoints og payload [gå til bruksanvisning](#api-calls-med-eksempeldata).
 
 ## Oppgave 3 - Logger
  - Alle kravene i oppgaven er oppfylt. 
